@@ -1,62 +1,94 @@
 # Incident Reporting Canvas Application
 
-![Application Screenshot](./assets/Screenshot%202023-09-25%20111355.png)
+## Summary
 
-## Overview
+The Incident Reporting Canvas Application is a powerful tool designed to streamline incident reporting and enhance data collection. With its unique and visually appealing phone layout UI/UX, this application provides an efficient and user-friendly solution for reporting and managing incidents. Seamlessly integrated with SharePoint, it allows users to upload incident images and related data securely.
 
-Welcome to the Incident Reporting Canvas Application, a powerful tool for streamlining incident reporting and enhancing data collection. This application features a unique and visually appealing phone layout UI/UX designed to improve user experience. With seamless SharePoint integration, users can easily upload incident images and related data, ensuring secure storage and efficient retrieval.
+![Incident Reporting Canvas App Preview](./assets/Screenshot%202023-09-25%20111027.png)
 
-## Key Features
+## Applies to
 
-- **Seamless SharePoint Integration**: Connects with SharePoint to store incident reports and images in a centralized location.
+* [Microsoft Power Apps](https://docs.microsoft.com/powerapps/)
 
-- **User-Friendly Interface**: Intuitive and attractive UI designed for effortless navigation and data entry.
+## Authors
 
-- **Unique Phone Layout**: Optimal screen usage for mobile devices, ensuring accessibility and ease of use.
+Solution|Author(s)
+--------|---------
+IncidentReportingApp | [Shaheer Ahmad](https://github.com/shaheerahmadch) [LinkedIn](https://www.linkedin.com/in/shaheer-ahmad-ch), 365Connect Community
 
-- **Effortless Incident Reporting**: Quick and simple incident reporting with image attachments.
+## Version history
 
-- **Enhanced Data Quality**: Validation checks for accurate and complete information.
+Version|Date|Comments
+-------|----|--------
+1.0|September 25, 2023|Initial release
 
-- **Real-time Collaboration**: Notifications and alerts for team collaboration.
+## Features
 
-- **Customizable Reporting Forms**: Tailor forms to your organization's specific needs.
+This sample illustrates the following concepts:
 
-- **Data Analytics**: Built-in analytics tools for valuable insights.
+* Streamlined incident reporting process
+* Visually appealing phone layout UI/UX
+* Seamless integration with SharePoint for data storage
+* Real-time collaboration and notifications
+* Customizable reporting forms
+* Data analytics for incident insights
 
-- **Security and Compliance**: High-level security and customization for compliance.
+## Prerequisites
 
-- **Scalability**: Scales to meet your organization's evolving needs.
+Before using this application, ensure you have the following:
 
-## Getting Started
+* A SharePoint site with the required permissions.
+* A SharePoint list named "IncidentReports" with the following columns:
+  - Title (Single line of text, Required)
+  - Description (Multiple lines of text, Optional)
+  - IncidentImage (Image, Optional)
+  - IncidentType (Choice, Required)
+  - IncidentDate (Date and Time, Required)
+* Two connection references:
+  - Outlook (for notification emails)
+  - Dataverse (for data storage)
+* Two environment variables for SharePoint site and list URLs.
+* An Automate flow for assigning incidents to the team.
+* A Model-Driven App for management.
 
-1. **Installation**: [Provide installation instructions if necessary.]
+## Solution Components
 
-2. **Configuration**: [Explain how to configure the application for your specific environment.]
+The following solution components are used in this sample:
 
-3. **Usage**: [Detailed usage instructions, including how to report incidents, customize forms, and access analytics.]
+* Incident Reporting Canvas App (Canvas app)
+* SharePoint Integration (Connection)
+* Dataverse Integration (Connection)
+* Outlook Integration (Connection)
+* Environment Variables (Power Apps)
+* Automate Flow (Power Automate)
+* Model-Driven App (Power Apps)
 
-4. **Contributing**: [Information on how to contribute to the development of the application, if applicable.]
+## Data Sources
 
-## Screenshots
+### Incident Reports List
 
-![Screenshot 1](./assets/Screenshot%202023-09-25%20111027.png)
+This SharePoint list contains incident report data, including incident details and uploaded images.
 
-![Screenshot 2](./assets/Screenshot%202023-09-25%20111103.png)
+|Type|Internal Name|Required|
+|---|---|:---:|
+|Single line of text|Title|Yes|
+|Multiple lines of text|Description|No|
+|Image|IncidentImage|No|
+|Choice|IncidentType|Yes|
+|Date and Time|IncidentDate|Yes|
 
-## Support and Feedback
+## Minimal Path to Awesome
 
-If you encounter any issues or have feedback, please feel free to [create an issue](https://github.com/shaheerahmadch/incident-reporting) on our GitHub repository. We value your input and will address any concerns promptly.
+1. [Download](./solutions/IncidentReporting_1_0_0_2.zip) the solution `.zip` from the `solution` folder.
+2. Within **https://make.powerapps.com**, import the `.zip` file via **Solutions** > **Import solution** > **Browse** and select the `.zip` file you just downloaded.
+3. Follow the on-screen instructions to deploy the application.
+4. Access the Incident Reporting Canvas App and start reporting incidents.
 
-## License
+## Using the Source Code
 
-This project is free to use.
+You can also use the [Power Apps CLI](https://aka.ms/pac/docs) to pack the source code by following these steps:
 
-## Acknowledgments
-
-We would like to express our gratitude to [mention any contributors or libraries used] for their contributions and support.
-
-## About Us
-
-[Shaheer Ahmad](https://github.com/shaheerahmadch)
-
+1. Clone the repository to a local drive.
+2. Pack the source files back into `.zip` file:
+   ```bash
+   pac solution pack --folder pathtosourcefolder --zipfile pathtosolution  --processCanvasApps
